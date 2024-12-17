@@ -51,6 +51,17 @@ class FunnelsPage:
         apply_button.click()
         time.sleep(5)
 
+    def glitch_display_export_button(self):
+        WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'MuiButton-root') and .//span[text()='Rename']]"))
+        ).click()
+
+        WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[@aria-label='close']"))
+        ).click()
+
+        time.sleep(5)
+
     def wait_for_download_complete(self, download_dir, timeout=60):
         """Wait for the CSV file to be completely downloaded."""
         start_time = time.time()
@@ -78,6 +89,7 @@ class FunnelsPage:
     def export_csv(self, download_dir):
         """Export the data to a CSV file and wait for it to complete downloading."""
         self.select_custom_date()
+        self.glitch_display_export_button()
 
         try:
             WebDriverWait(self.driver, 30).until(

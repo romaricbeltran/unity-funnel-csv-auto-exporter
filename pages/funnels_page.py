@@ -89,20 +89,11 @@ class FunnelsPage:
     def export_csv(self, download_dir):
         """Export the data to a CSV file and wait for it to complete downloading."""
         self.select_custom_date()
-        self.glitch_display_export_button()
+        #self.glitch_display_export_button()
 
-        try:
-            WebDriverWait(self.driver, 30).until(
-                EC.visibility_of_element_located((By.CSS_SELECTOR, 'ul.MuiMenu-list'))
-            )
-        except:
-            WebDriverWait(self.driver, 30).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[data-testid="export-menu-button"]'))
-            ).click()
-
-            WebDriverWait(self.driver, 30).until(
-                EC.visibility_of_element_located((By.CSS_SELECTOR, 'ul.MuiMenu-list'))
-            )
+        WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[data-testid="export-menu-button"]'))
+        ).click()
 
         export_button = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, "li[data-testid='export-to-csv']"))

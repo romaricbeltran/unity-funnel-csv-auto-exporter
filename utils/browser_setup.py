@@ -10,6 +10,7 @@ def setup_browser(download_dir):
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=3840,2160")
+    options.add_argument("--force-device-scale-factor=0.5")
 
     prefs = {
         "download.default_directory": download_dir,

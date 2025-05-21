@@ -95,7 +95,7 @@ class FunnelsPage:
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[data-testid="export-menu-button"]'))
         ).click()
 
-        export_button = WebDriverWait(self.driver, 30).until(
+        WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, "li[data-testid='export-to-csv']"))
         ).click()
 

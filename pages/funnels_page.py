@@ -91,6 +91,11 @@ class FunnelsPage:
         self.select_custom_date()
         #self.glitch_display_export_button()
 
+        # Wait for the backdrop hiding
+        WebDriverWait(self.driver, 10).until(
+            EC.invisibility_of_element_located((By.CLASS_NAME, "MuiBackdrop-root"))
+        )
+
         WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[data-testid="export-menu-button"]'))
         ).click()
